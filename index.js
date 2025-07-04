@@ -5,6 +5,9 @@ const app = express();
 import cors from "cors";
 import connectDB from "./utils/db.js";
 
+//import all routes
+import userRoutes from "./routes/user.routes.js";
+
 app.use(
   cors({
     origin: process.env.BASE_URL,
@@ -26,6 +29,9 @@ app.get("/arpan", (req, res) => {
 
 //connect to db
 connectDB();
+
+//user routes
+app.use("/api/v1/users", userRoutes);
 
 app.listen(port, () => {
   console.log(`listening to port ${port}`);
